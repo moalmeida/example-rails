@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: web_development
+  username: <%= ENV['WEB_DATABASE_USERNAME'] %>
+  password: <%= ENV['WEB_DATABASE_PASSWORD'] %>
+  host: <%= ENV['WEB_DATABASE_HOST'] %>
+  port: <%= ENV['WEB_DATABASE_PORT'] %>
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+test:
+  <<: *default
+  database: web_test
+  username: <%= ENV['WEB_DATABASE_USERNAME'] %>
+  password: <%= ENV['WEB_DATABASE_PASSWORD'] %>
+  host: <%= ENV['WEB_DATABASE_HOST'] %>
+  port: <%= ENV['WEB_DATABASE_PORT'] %>
+production:
+  <<: *default
+  database: web_production
+  username: <%= ENV['WEB_DATABASE_USERNAME'] %>
+  password: <%= ENV['WEB_DATABASE_PASSWORD'] %>
+  host: <%= ENV['WEB_DATABASE_HOST'] %>
+  port: <%= ENV['WEB_DATABASE_PORT'] %>
